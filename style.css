@@ -1,4 +1,5 @@
 
+
 :root {
     --card-bg: #ffffff;
     --card-border: 1px solid #EAEAEA;
@@ -6,22 +7,26 @@
     --text-title-color: #1F2937;
     --text-desc-color: #718096;
 
-
-    --clr-blue-bg: #EEF2FF;    --clr-blue-ico: #3B82F6;
-    --clr-green-bg: #ECFDF5;   --clr-green-ico: #10B981;
-    --clr-purple-bg: #F5F3FF;  --clr-purple-ico: #8B5CF6;
-    --clr-orange-bg: #FFF7ED;  --clr-orange-ico: #EA580C;
+    --clr-blue-bg: #EEF2FF;
+    --clr-green-bg: #ECFDF5;
+    --clr-purple-bg: #F5F3FF;
+    --clr-orange-bg: #FFF7ED;
+    --clr-red-bg: #FEF2F2;
 }
 
-
-html:not(.designer) [id*="Table1"] {
+html:not(.designer) table[id*="Table1"],
+html:not(.designer) table[id*="Table4"],
+html:not(.designer) table[name*="Table1"],
+html:not(.designer) table[name*="Table4"] {
     display: block !important;
     width: 100% !important;
     background-color: transparent !important;
     border: none !important;
+    border-collapse: collapse !important;
 }
 
-html:not(.designer) [id*="Table1"] > tbody {
+html:not(.designer) table[id*="Table1"] > tbody,
+html:not(.designer) table[id*="Table4"] > tbody {
     display: flex !important;
     flex-direction: column !important;
     gap: 1.5rem !important; 
@@ -29,23 +34,22 @@ html:not(.designer) [id*="Table1"] > tbody {
     padding: 1rem 0 !important;
 }
 
-html:not(.designer) [id*="Table1"] > tbody > tr {
+html:not(.designer) table[id*="Table1"] > tbody > tr,
+html:not(.designer) table[id*="Table4"] > tbody > tr {
     display: flex !important;
     flex-direction: row !important;
     gap: 1.5rem !important; 
     width: 100% !important;
 }
 
-
-html:not(.designer) [id*="Table1"] > tbody > tr > td {
+html:not(.designer) table[id*="Table1"] > tbody > tr > td,
+html:not(.designer) table[id*="Table4"] > tbody > tr > td {
     flex: 1 !important;
-    width: 50% !important;
     background-color: var(--card-bg) !important;
     border: var(--card-border) !important;
     border-radius: 1rem !important; 
     padding: 1.25rem 1.5rem !important;
     box-shadow: var(--card-shadow) !important;
-    
     
     display: flex !important;
     align-items: center !important;
@@ -60,13 +64,17 @@ html:not(.designer) [id*="Table1"] > tbody > tr > td {
 }
 
 
-html:not(.designer) [id*="Table1"] > tbody > tr > td:hover {
+html:not(.designer) table[id*="Table1"] > tbody > tr > td:hover,
+html:not(.designer) table[id*="Table4"] > tbody > tr > td:hover {
     transform: translateY(-3px) !important;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06) !important;
 }
 
 
-html:not(.designer) [id*="Table1"] td > div {
+html:not(.designer) table[id*="Table1"] td > div,
+html:not(.designer) table[id*="Table4"] td > div,
+html:not(.designer) table[id*="Table1"] td .editor-cell,
+html:not(.designer) table[id*="Table4"] td .editor-cell {
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
@@ -75,24 +83,26 @@ html:not(.designer) [id*="Table1"] td > div {
 }
 
 
-html:not(.designer) [id*="Table1"] span.SFC.SourceCode-Forms-Controls-Web-Label:nth-of-type(1) {
+html:not(.designer) [id*="Table1"] span.SFC.SourceCode-Forms-Controls-Web-Label:nth-of-type(1),
+html:not(.designer) [id*="Table4"] span.SFC.SourceCode-Forms-Controls-Web-Label:nth-of-type(1) {
     font-size: 1.15rem !important;
     color: var(--text-title-color) !important;
     font-weight: 600 !important;
-    font-family: var(--regularFont), sans-serif !important;
 }
 
 
-html:not(.designer) [id*="Table1"] span.SFC.SourceCode-Forms-Controls-Web-Label:nth-of-type(2) {
-    font-size: 0.85rem !important;
+html:not(.designer) [id*="Table1"] span.SFC.SourceCode-Forms-Controls-Web-Label:nth-of-type(2),
+html:not(.designer) [id*="Table4"] span.SFC.SourceCode-Forms-Controls-Web-Label:nth-of-type(2) {
+    font-size: 0.95rem !important;
     color: var(--text-desc-color) !important;
     font-weight: 400 !important;
-    font-family: var(--regularFont), sans-serif !important;
 }
 
 
-html:not(.designer) [id*="Table1"] td img:first-of-type,
-html:not(.designer) [id*="Table1"] td svg:first-of-type {
+html:not(.designer) table[id*="Table1"] td img:first-of-type,
+html:not(.designer) table[id*="Table4"] td img:first-of-type,
+html:not(.designer) table[id*="Table1"] td [class*="Image"]:first-of-type,
+html:not(.designer) table[id*="Table4"] td [class*="Image"]:first-of-type {
     border-radius: 0.75rem !important;
     padding: 0.6rem !important;
     width: 2.5rem !important;
@@ -100,23 +110,35 @@ html:not(.designer) [id*="Table1"] td svg:first-of-type {
     object-fit: contain !important;
 }
 
-html:not(.designer) [id*="Table1"] > tbody > tr:nth-child(1) > td:nth-child(1) img:first-of-type {
-    background-color: var(--clr-blue-bg) !important;
-}
 
-html:not(.designer) [id*="Table1"] > tbody > tr:nth-child(1) > td:nth-child(2) img:first-of-type {
-    background-color: var(--clr-green-bg) !important;
-}
+html:not(.designer) table[id*="Table1"] > tbody > tr:nth-child(1) > td:nth-child(1) img:first-of-type,
+html:not(.designer) table[id*="Table1"] > tbody > tr:nth-child(1) > td:nth-child(1) [class*="Image"]:first-of-type { background-color: var(--clr-blue-bg) !important; }
 
-html:not(.designer) [id*="Table1"] > tbody > tr:nth-child(2) > td:nth-child(1) img:first-of-type {
-    background-color: var(--clr-purple-bg) !important;
-}
+html:not(.designer) table[id*="Table1"] > tbody > tr:nth-child(1) > td:nth-child(2) img:first-of-type,
+html:not(.designer) table[id*="Table1"] > tbody > tr:nth-child(1) > td:nth-child(2) [class*="Image"]:first-of-type { background-color: var(--clr-green-bg) !important; }
 
-html:not(.designer) [id*="Table1"] > tbody > tr:nth-child(2) > td:nth-child(2) img:first-of-type {
-    background-color: var(--clr-orange-bg) !important;
-}
+html:not(.designer) table[id*="Table1"] > tbody > tr:nth-child(2) > td:nth-child(1) img:first-of-type,
+html:not(.designer) table[id*="Table1"] > tbody > tr:nth-child(2) > td:nth-child(1) [class*="Image"]:first-of-type { background-color: var(--clr-purple-bg) !important; }
 
-html:not(.designer) [id*="Table1"] td img:last-of-type {
+html:not(.designer) table[id*="Table1"] > tbody > tr:nth-child(2) > td:nth-child(2) img:first-of-type,
+html:not(.designer) table[id*="Table1"] > tbody > tr:nth-child(2) > td:nth-child(2) [class*="Image"]:first-of-type { background-color: var(--clr-orange-bg) !important; }
+
+
+html:not(.designer) table[id*="Table4"] > tbody > tr > td:nth-child(1) img:first-of-type,
+html:not(.designer) table[id*="Table4"] > tbody > tr > td:nth-child(1) [class*="Image"]:first-of-type { background-color: var(--clr-blue-bg) !important; }
+
+html:not(.designer) table[id*="Table4"] > tbody > tr > td:nth-child(2) img:first-of-type,
+html:not(.designer) table[id*="Table4"] > tbody > tr > td:nth-child(2) [class*="Image"]:first-of-type { background-color: var(--clr-green-bg) !important; }
+
+html:not(.designer) table[id*="Table4"] > tbody > tr > td:nth-child(3) img:first-of-type,
+html:not(.designer) table[id*="Table4"] > tbody > tr > td:nth-child(3) [class*="Image"]:first-of-type { background-color: var(--clr-red-bg) !important; }
+
+html:not(.designer) table[id*="Table4"] > tbody > tr > td:nth-child(4) img:first-of-type,
+html:not(.designer) table[id*="Table4"] > tbody > tr > td:nth-child(4) [class*="Image"]:first-of-type { background-color: var(--clr-purple-bg) !important; }
+
+
+html:not(.designer) table[id*="Table1"] td img:last-of-type,
+html:not(.designer) table[id*="Table1"] td [class*="Image"]:last-of-type {
     margin-left: auto !important;
     width: 1.2rem !important;
     height: 1.2rem !important;
@@ -124,25 +146,26 @@ html:not(.designer) [id*="Table1"] td img:last-of-type {
     transition: transform 0.2s ease !important;
 }
 
-html:not(.designer)[dir="rtl"] [id*="Table1"] td img:last-of-type {
+html:not(.designer)[dir="rtl"] table[id*="Table1"] td img:last-of-type,
+html:not(.designer)[dir="rtl"] table[id*="Table1"] td [class*="Image"]:last-of-type {
     margin-right: auto !important;
     margin-left: 0 !important;
     transform: scaleX(-1) !important;
 }
 
-html:not(.designer) [id*="Table1"] > tbody > tr > td:hover img:last-of-type {
-    opacity: 1 !important;
+html:not(.designer) table[id*="Table1"] > tbody > tr > td:hover img:last-of-type {
     transform: translateX(4px) !important;
-}
-html:not(.designer)[dir="rtl"] [id*="Table1"] > tbody > tr > td:hover img:last-of-type {
-    transform: scaleX(-1) translateX(-4px) !important;
+    opacity: 1 !important;
 }
 
-@media (max-width: 768px) {
-    html:not(.designer) [id*="Table1"] > tbody > tr {
+
+@media (max-width: 992px) {
+    html:not(.designer) table[id*="Table1"] > tbody > tr,
+    html:not(.designer) table[id*="Table4"] > tbody > tr {
         flex-direction: column !important;
     }
-    html:not(.designer) [id*="Table1"] > tbody > tr > td {
+    html:not(.designer) table[id*="Table1"] > tbody > tr > td,
+    html:not(.designer) table[id*="Table4"] > tbody > tr > td {
         width: 100% !important;
     }
 }
